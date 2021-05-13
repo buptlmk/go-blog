@@ -1,0 +1,4 @@
+{
+    "room_name":"testchat",
+    "user_id":"12"
+}

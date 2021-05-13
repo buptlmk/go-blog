@@ -1,0 +1,6 @@
+{
+    "type":1,
+    "user":"lmk",
+    "user_id":"12",
+    "text":"this is a text."
+}

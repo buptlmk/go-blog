@@ -1,0 +1,60 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/jest": "24.0.23",
+    "@types/jest-diff": "^24.3.0",
+    "@types/node": "12.12.7",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.4",
+    "@types/react-router-dom": "^5.1.0",
+    "@types/recharts": "^1.1.21",
+    "@types/universal-cookie": "^2.2.0",
+    "antd": "^3.20.7",
+    "axios": "^0.19.0",
+    "babel-plugin-import": "^1.12.0",
+    "classname": "^0.0.0",
+    "customize-cra": "^0.8.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "markdown-navbar": "1.4.0",
+    "react": "^16.8.6",
+    "react-app-rewired": "^2.1.3",
+    "react-dom": "^16.8.6",
+    "react-markdown": "^6.0.2",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.2.0",
+    "recharts": "^1.7.1",
+    "typescript": "3.7.2",
+    "universal-cookie": "^4.0.2"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">1%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2016",
+    "sourceMap": true
+  },
+  "proxy": "http://localhost:8080",
+  "@proxy": "https://cloud.kuanguanglab.com:443"
+}

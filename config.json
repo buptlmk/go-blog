@@ -1,0 +1,32 @@
+{
+  "ProjectPath": "/Users/lmk/GolandProjects/blog",
+  "SecretKey": "cloud.blog.com",
+  "Log": "/Users/lmk/GolandProjects/blog/logRecord",
+
+  "Server": {
+    "Port":8080,
+    "Addr": "0.0.0.0"
+  },
+
+  "SQLSet": {
+    "User": "root",
+    "Password": "123456",
+    "Ip": "10.106.128.105",
+    "Port": 17580,
+    "DBName": "data"
+  },
+
+  "RedisSet": {
+    "Addr": "10.106.128.113:6379",
+    "Password": "",
+    "DB": 0
+  },
+
+  "RabbitMq": {
+    "User": "lmk",
+    "Password": "123456",
+    "Addr": "10.106.128.113:5672",
+    "VirtualHost": "mq"
+  }
+
+}

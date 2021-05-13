@@ -13,3 +13,10 @@
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
+frontend_pro/
+frontend/node_modules
+frontend/build
+frontend/.idea
+/logRecord
+/blog
+*.idea

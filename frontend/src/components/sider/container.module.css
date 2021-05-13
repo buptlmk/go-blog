@@ -1,0 +1,51 @@
+.air_bubble {
+    float:right;
+    width: 180px;
+    position: absolute;
+    right: 85px;
+    background-color: #fff;
+    border-bottom-color: #fff;
+    /*为了给after伪元素自动继承*/
+    color: #333333;
+    font-size: 16px;
+    padding: 5px;
+    box-sizing: border-box;
+    word-break: break-all;
+    box-shadow: 0px 2px 2px 2px #eee;
+}
+/*此处css为向上带阴影的三角，用于气泡箭头*/
+.air_bubble::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    right: -4px;
+    border-style: solid;
+    border-width: 6px;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(225deg);
+    -webkit-box-shadow: -2px 2px 3px 0 #eee;
+    -moz-box-shadow: -2px 2px 3px 0 #eee;
+    box-shadow: -2px 2px 3px 0 #eee;
+}
+
+
+.side_float_btn {
+    height: 60px;
+    width: 60px;
+    border-radius: 10px;
+    background: rgba(0, 132, 255, .8);
+    margin-bottom: 24px;
+    display: flex;
+    outline: none;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+/*这里的hover用css 只是为了悬浮按钮的hover效果*/
+.side_float_btn:hover {
+   background: #0084ff;
+}
