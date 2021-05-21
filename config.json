@@ -11,13 +11,13 @@
   "SQLSet": {
     "User": "root",
     "Password": "123456",
-    "Ip": "10.106.128.105",
-    "Port": 17580,
+    "Ip": "xxxxxxx",
+    "Port": xxx,
     "DBName": "data"
   },
 
   "RedisSet": {
-    "Addr": "10.106.128.113:6379",
+    "Addr": "xxxxx",
     "Password": "",
     "DB": 0
   },
@@ -25,7 +25,7 @@
   "RabbitMq": {
     "User": "lmk",
     "Password": "123456",
-    "Addr": "10.106.128.113:5672",
+    "Addr": "xxxxxx",
     "VirtualHost": "mq"
   }
 
