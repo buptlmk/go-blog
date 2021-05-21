@@ -36,3 +36,19 @@ type User struct {
 	QQ     string `json:"qq"`
 	Wechat string `json:"wechat"`
 }
+
+type Activity struct {
+	Id          int64  `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Time        string `json:"time"`
+	Img         string `json:"img"`
+	Total       int    `json:"total"`
+	Res         int    `json:"res"`
+}
+
+type Chat struct {
+	Id           int64  `json:"id"`
+	Name         string `json:"name"`
+	PersonNumber int    `json:"personNumber"`
+}

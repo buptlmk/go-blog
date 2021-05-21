@@ -77,6 +77,23 @@ func NewConsumer(name string, exchange string) (*Consumer, error) {
 	return c, nil
 }
 
+func DelConsumer(name string) (err error) {
+
+	conn, err := amqp.Dial(mqUrl)
+	defer conn.Close()
+	if err != nil {
+		return err
+	}
+
+	channel, err := conn.Channel()
+	defer channel.Close()
+	if err != nil {
+		return err
+	}
+	_, err = channel.QueueDelete(name, false, false, true)
+	return err
+}
+
 func (p *Producer) Publish(text string) error {
 
 	if err := p.Channel.Publish(p.Exchange, "", true, false, amqp.Publishing{

@@ -6,6 +6,7 @@ import (
 	"blog/database/redis"
 	"blog/log"
 	"blog/router"
+	_ "blog/router/activity"
 	_ "blog/router/article"
 	_ "blog/router/chat"
 	_ "blog/router/comment"

@@ -99,6 +99,7 @@ func loginUser(c *gin.Context) {
 	http.SetCookie(c.Writer, &http.Cookie{Name: "token", Value: token, MaxAge: 3 * 86400, Path: "/"})
 	http.SetCookie(c.Writer, &http.Cookie{Name: "id", Value: strconv.FormatInt(id, 10), MaxAge: 3 * 86400, Path: "/"})
 	http.SetCookie(c.Writer, &http.Cookie{Name: "name", Value: name, MaxAge: 3 * 86400, Path: "/"})
+	http.SetCookie(c.Writer, &http.Cookie{Name: "cardId", Value: reqData.CardId, MaxAge: 3 * 86400, Path: "/"})
 	c.JSON(200, router.Response{
 		State:   0,
 		Message: "success",

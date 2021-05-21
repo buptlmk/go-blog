@@ -4,6 +4,7 @@ import (
 	"blog/database/mysql"
 	"blog/log"
 	"blog/utils"
+	"time"
 )
 
 func GetArticle(id int64) (article utils.Article, err error) {
@@ -82,5 +83,19 @@ func AddArticleVisitedNumber(id int64, number int64) (err error) {
 		return err
 	}
 	return
+
+}
+
+func AddArticle(authorId int, title string, content string) (err error) {
+	tx, err := mysql.Begin()
+	if err != nil {
+		return err
+	}
+	defer mysql.GraceCommit(tx, err)
+
+	sqlCmd := `insert into article(title,author_id,content,created_time) values (?,?,?,?)`
+
+	_, err = tx.Exec(sqlCmd, title, authorId, content, time.Now())
+	return err
 
 }

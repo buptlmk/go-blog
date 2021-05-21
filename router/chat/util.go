@@ -1,6 +1,7 @@
 package chat
 
 import (
+	"blog/database"
 	"blog/log"
 	"blog/mq"
 	"encoding/json"
@@ -17,7 +18,7 @@ type Event struct {
 	Type      int       `json:"type" binding:"required"`
 	Timestamp time.Time `json:"timestamp"`
 	User      string    `json:"user" binding:"required"`
-	UserId    string    `json:"user_id" binding:"required"`
+	CardId    string    `json:"cardId" binding:"required"`
 	Text      string    `json:"text" binding:"required"`
 }
 
@@ -37,13 +38,55 @@ func addRoom(name string) (err error) {
 
 }
 
-func joinRoom(roomName, queueName string) (err error) {
+func init() {
+	go func() {
+		time.Sleep(3 * time.Second)
+
+		for {
+			rooms, err := database.GetAllChatRoom()
+			if err != nil {
+				time.Sleep(1 * time.Minute)
+				continue
+			}
+
+			for i := 0; i < len(rooms); i++ {
+				name := rooms[i].Name
+				if _, ok := Rooms.Load(name); !ok {
+					p, err := mq.NewProducer(name)
+					if err != nil {
+						log.Logger.Info(err)
+						continue
+					}
+					log.Logger.Info(name + " is ready.")
+					Rooms.Store(name, p)
+				}
+			}
+
+			time.Sleep(1 * time.Second)
+
+		}
+
+	}()
+}
+
+func joinRoom(roomName string, queueName string) (err error) {
 
 	_, err = mq.NewConsumer(roomName+queueName, roomName)
 	if err != nil {
 		return err
 	}
 	log.Logger.Info(queueName + " join into chat room: " + roomName)
+	return nil
+}
+
+func exitRoom(roomName string, queueName string) (err error) {
+
+	err = mq.DelConsumer(roomName + queueName)
+	if err != nil {
+		log.Logger.Error(err.Error())
+		return err
+	}
+	log.Logger.Info(queueName + " quit chat room: " + roomName)
 	return nil
 }
 

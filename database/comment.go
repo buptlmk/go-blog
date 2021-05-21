@@ -22,6 +22,13 @@ func AddComment(userId int64, articleId int64, content string) (err error) {
 		log.Logger.Error(err.Error())
 		return err
 	}
+
+	sqlCmd = `update article set comment_number=comment_number+1 where id=?`
+	if _, err = tx.Exec(sqlCmd, articleId); err != nil {
+
+		log.Logger.Error(err.Error())
+		return err
+	}
 	return nil
 }
 

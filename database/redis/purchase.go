@@ -39,7 +39,7 @@ type RemoteSpikeKeys struct {
 
 // redis使用lua脚本保证一致性
 
-const LuaScript = `
+const luaScript = `
         local ticket_key = KEYS[1]
         local ticket_total_key = ARGV[1]
         local ticket_sold_key = ARGV[2]
