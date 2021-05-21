@@ -71,7 +71,7 @@ export class Navigation extends React.Component {
                             // inlineCollapsed={true}
                         >
                             <Menu.Item key='0'>
-                                <Link to="/write">
+                                <Link to="/article/edit">
                                     <Icon type="edit" theme="filled" style={{color:'#08ff00'}}/>
                                     <span>创作</span>
                                 </Link>
@@ -88,11 +88,11 @@ export class Navigation extends React.Component {
                                     <span>活动</span>
                                 </Link>
                             </Menu.Item>
-                            <Menu.Item key="3">
-                                <Link to="/message">
-                                    <span>消息</span>
-                                </Link>
-                            </Menu.Item>
+                            {/*<Menu.Item key="3">*/}
+                            {/*    <Link to="/message">*/}
+                            {/*        <span>消息</span>*/}
+                            {/*    </Link>*/}
+                            {/*</Menu.Item>*/}
                             <SubMenu
                                 title={!this.state.hasLogin?<Avatar style={{color: '#f56a00', backgroundColor: '#fde3cf'}}>游客</Avatar>:<Avatar src={"/upload/"+this.userService.getId()+".png"}/>}>
                                 {this.state.hasLogin? <Login/>:<NoLogin/>}

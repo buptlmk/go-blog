@@ -1,27 +1,31 @@
 import React,{Component} from "react";
 import {CommentEntity} from "../../service/article/structs";
-import {List, Comment, Avatar, Form,Button,Input} from "antd";
+import {List, Comment, Avatar, Form, Button, Input, message} from "antd";
 import moment from 'moment';
 import {UserService} from "../../service/user/user";
+import {ArticleService} from "../../service/article/articleService";
 const { TextArea } = Input;
 
 interface CommentProp {
     comments : Array<CommentEntity>
+    articleId:number
 }
 
 class CommentState{
     comments:Array<CommentEntity>=[]
     value:string=""
     submitting:boolean=false
+    articleId:number=0
 }
 
 export class CommentStatus extends React.Component<CommentProp>{
     state = new CommentState()
-    userService = UserService.get()
+    articleService = ArticleService.get()
 
     componentDidMount() {
         this.setState({
             comments:this.props.comments,
+            articleId:this.props.articleId,
         })
     }
 
@@ -40,23 +44,31 @@ export class CommentStatus extends React.Component<CommentProp>{
         this.setState({
             submitting: true,
         });
+        this.articleService.addComment(this.state.articleId,this.state.value).then(res=>{
+            if (res.state!==0){
+                message.error(res.message)
+            }else{
+                message.success("comment success")
+                this.setState({
+                    submitting: false,
+                    value: '',
+                    comments: [
+                        ...this.state.comments,
+                        {
+                            user: this.articleService.name,
+                            userId:this.articleService.id,
+                            content: <p>{this.state.value}</p>,
+                            createdTime: moment().fromNow(),
+                        },
 
-        setTimeout(() => {
-            this.setState({
-                submitting: false,
-                value: '',
-                comments: [
-                    ...this.state.comments,
-                    {
-                        user: this.userService.name,
-                        userId:this.userService.id,
-                        content: <p>{this.state.value}</p>,
-                        createdTime: moment().fromNow(),
-                    },
+                    ],
+                });
+            }
+        });
 
-                ],
-            });
-        }, 1000);
+        // setTimeout(() => {
+        //
+        // }, 1000);
     };
 
 
@@ -86,8 +98,8 @@ export class CommentStatus extends React.Component<CommentProp>{
                 <Comment
                     avatar={
                         <Avatar
-                            src={"/upload/"+this.userService.getId()+".png"}
-                            alt={this.userService.getName()}
+                            src={"/upload/"+this.articleService.getId()+".png"}
+                            alt={this.articleService.getName()}
                         />
                     }
                     content={

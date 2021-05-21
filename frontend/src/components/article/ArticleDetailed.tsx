@@ -19,6 +19,18 @@ class ArticleDetailedState{
 export class ArticleDetailed extends React.Component<DetailedProp>{
     state = new ArticleDetailedState()
     articleService: ArticleService = ArticleService.get();
+    // test = '### sdgdfs\n' +
+    //     '测试图片\n' +
+    //     '![img](/upload/12.png)\n' +
+    //     '```go\n' +
+    //     'import "fmt"\n' +
+    //     '\n' +
+    //     'func Article(){\n' +
+    //     '       test := "test"\n' +
+    //     '       fmt.Println(test)\n' +
+    //     '}\n' +
+    //     '```\n' +
+    //     '**还有什么？**'
     render() {
         return (
             <Row className="comm-main" type="flex" justify="center">

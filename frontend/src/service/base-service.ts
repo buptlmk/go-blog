@@ -15,6 +15,7 @@ export class BaseService {
 
     cookies = new Cookies();
     id: number = 0;
+    cardId:string="";
     name: string = "";
     operator: number = this.id;
     // session: string = "1d5a59fd33fd1488723642b0cacc2ff04d3e8438348fa2162d4a1cbff5adaff5";
@@ -35,9 +36,17 @@ export class BaseService {
 
     getId(): number {
         if (this.id === 0 || this.id === undefined) {
-            this.id = this.cookies.get("id");
+            console.log(this.id)
+            this.id = Number(this.cookies.get("id"));
         }
         return this.id
+    }
+
+    getCardId(): string {
+        if (this.cardId === "" || this.cardId === undefined) {
+            this.cardId = this.cookies.get("cardId");
+        }
+        return this.cardId
     }
 
     getOperator(): number {
@@ -78,6 +87,31 @@ export class BaseService {
             return cacheData && Date.now() - cacheData.time < cacheTime ? cacheData.data : undefined
         }
         return undefined
+    }
+    async uploadImage(image:File){
+        let res
+        let token = this.getToken()
+        let param = new FormData()
+        param.append('file',image)
+        try{
+            let response = await axios.post<Response<string>>("/upload/"+image.name,
+                param,
+                {
+                    "headers":{
+                        "Content-Type":"multipart/form-data",
+                        "token":token,
+                    },
+                },
+            );
+            res = response.data
+        }catch (e) {
+            res = {
+                state:e.status,
+                message:e.statusText,
+                data:'',
+            }
+        }
+        return res
     }
 
     async cachedPost<T>(url: string, data: any, cacheTime: number = 2000): Promise<Response<T>> {

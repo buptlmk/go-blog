@@ -6,9 +6,9 @@ import {ArticleStatus} from "./article-status";
 import {SiderMenu} from "../sider/sider";
 import ReactMarkdown from 'react-markdown';
 // 不适合ts
-import MarkdownNavbar from 'markdown-navbar/index.js';
+// import MarkdownNavbar from 'markdown-navbar/index.js';
 // The default style of markdown-navbar should be imported additionally
-import 'markdown-navbar/dist/navbar.css';
+// import 'markdown-navbar/dist/navbar.css';
 // import '../common/comm.less'
 
 class ArticleProp {

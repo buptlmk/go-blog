@@ -59,21 +59,28 @@ export class ArticleStatus extends React.Component<ArticleStatusProp,ArticleStat
             // })
             console.log("---->")
             this.articleService.getComments(this.props.article.id).then(res=>{
-                if (res.state !== 0|| !res.data) {
+                if (res.state !== 0) {
                     message.warn(res.message, 1.5);
                     return
                 }else{
                     // message.success("star article success",1.5)
                     // const data = this.state.comments.concat(res.data)
-                    this.setState({
-                        // starNumber:this.state.starNumber+1
-                        commentBool:true,
-                        comments:res.data,
-                    },
-                    () => {
-                        window.dispatchEvent(new Event('resize'));
-                    });
-
+                    if (!res.data){
+                        this.setState({
+                            commentBool:true
+                        },
+                        () => {
+                            window.dispatchEvent(new Event('resize'));
+                        })
+                    }else{
+                        this.setState({
+                            commentBool:true,
+                            comments:res.data,
+                        },
+                        () => {
+                            window.dispatchEvent(new Event('resize'));
+                        })
+                    }
                 }
             })
         }else{
@@ -113,7 +120,7 @@ export class ArticleStatus extends React.Component<ArticleStatusProp,ArticleStat
                         </span>
                     </Col>
                 </Row>
-                {!this.state.commentBool?null:<CommentStatus comments={this.state.comments}/>}
+                {!this.state.commentBool?null:<CommentStatus articleId={this.props.article.id} comments={this.state.comments}/>}
             </div>
 
         )

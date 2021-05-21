@@ -67,6 +67,7 @@ export class UserService extends BaseService{
         if (token===""||token===undefined){
             return false
         }
+        // TODO:这里应进一步检查
         return true
     };
 

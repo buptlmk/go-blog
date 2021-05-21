@@ -8,23 +8,26 @@ import {Navigation} from "./components/sider/header";
 import {ActivityLayout} from "./components/activity/activity";
 import {ArticleDetailed} from "./components/article/ArticleDetailed";
 import {url} from "inspector";
+import {ArticleEdit} from "./components/article/article-edit";
+import {ChatLayout} from "./components/chat/ChatLayout";
 const {Footer, Content} = Layout;
 
 export class Layouts extends React.Component{
     render() {
         return(
-            <Layout style={{color:"#fff"}}>
+            <Layout style={{background:'#fff'}}>
                 <Navigation/>
                 <Content style={{minHeight: '100vh'}}>
                     {/*<p/>*/}
-                    <Layout style={{minHeight: '80vh'}}>
+                    <Layout style={{minHeight: '100vh'}}>
                         <Content style={{background: '#f6f6f6'}}>
                             <Switch>
                                 <Route exact path={['/article','/']} component={ArticleLayout}/>
                                 <Route path={'/activity'} component={ActivityLayout}/>
-                                <Route path={'/article/detailed/:id'}>
-                                    <ArticleDetailed/>
-                                </Route>
+                                <Route path={'/article/detailed/:id'} component={ArticleDetailed}/>
+                                <Route path={'/article/edit'} component={ArticleEdit}/>
+                                <Route path={'/chat'} component={ChatLayout}/>
+
                             </Switch>
                         </Content>
                         {/*<SiderMenu/>*/}
