@@ -24,20 +24,20 @@ export class SiderMenu extends React.Component{
                     style={{width:200}}>
                     <Carousel autoplay dots={false}>
                         <Statistic
-                            title="Active"
-                            value={11.28}
-                            precision={2}
+                            title="访问量"
+                            value={99999}
+                            // precision={2}
                             valueStyle={{ color: '#3f8600' }}
                             prefix={<Icon type="arrow-up" />}
-                            suffix="%"
+                            // suffix="%"
                         />
                         <Statistic
-                            title="Idle"
-                            value={9.3}
-                            precision={2}
-                            valueStyle={{ color: '#cf1322' }}
-                            prefix={<Icon type="arrow-down" />}
-                            suffix="%"
+                            title="用户"
+                            value={9999}
+                            // precision={2}
+                            valueStyle={{ color: '#3f8600' }}
+                            prefix={<Icon type="arrow-up" />}
+                            // suffix="%"
                         />
                     </Carousel>
                 </Card>
@@ -49,15 +49,15 @@ export class SiderMenu extends React.Component{
                     style={{width:200}}
                     cover={<img alt="example" src={"https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"} />}
                 >
-                    <Meta title="Eurpose Street beat" description="www.instagram.com" />
+                    <Meta title="美女" description="为枯燥的页面添加点色彩" />
                 </Card>
                 <p/>
 
                 <Card id={"devTime"} style={{width:200}}>
                     <Timeline>
                         <Timeline.Item>Start</Timeline.Item>
-                        <Timeline.Item color="green">Finish task A</Timeline.Item>
-                        <Timeline.Item color="red">Finish task B</Timeline.Item>
+                        <Timeline.Item color="green">Finish 前端</Timeline.Item>
+                        <Timeline.Item color="red">Finish 后端</Timeline.Item>
                         <Timeline.Item dot={<Icon type="clock-circle-o" style={{ fontSize: '16px' }} />}>
                             Test
                         </Timeline.Item>

@@ -12,9 +12,7 @@ import (
 
 var rabbitmqCfg = config.Settings.RabbitMq
 
-//var mqUrl = fmt.Sprintf("amqp://%s:%s@%s/%s",rabbitmqCfg.User,rabbitmqCfg.Password,rabbitmqCfg.Addr,rabbitmqCfg.VirtualHost)
-
-var mqUrl = "amqp://lmk:123456@10.106.128.113:5672/mq"
+var mqUrl = fmt.Sprintf("amqp://%s:%s@%s/%s", rabbitmqCfg.User, rabbitmqCfg.Password, rabbitmqCfg.Addr, rabbitmqCfg.VirtualHost)
 
 type Rabbitmq struct {
 	conn    *amqp.Connection

@@ -1,6 +1,7 @@
 package redis
 
 import (
+	"blog/config"
 	"blog/log"
 	"context"
 	"errors"
@@ -19,19 +20,10 @@ func Close() error {
 
 func InitRedis() error {
 
-	//RDB = redis.NewClient(&redis.Options{
-	//	Addr: config.Settings.RedisSet.Addr,
-	//	//Addr: "10.106.128.113:6379",
-	//	Password: config.Settings.RedisSet.Password,
-	//	//Password: "",
-	//	DB: config.Settings.RedisSet.DB,
-	//	//DB:0,
-	//})
-
 	RDB = redis.NewClient(&redis.Options{
-		Addr:     "10.106.128.113:6379",
-		Password: "",
-		DB:       0,
+		Addr:     config.Settings.RedisSet.Addr,
+		Password: config.Settings.RedisSet.Password,
+		DB:       config.Settings.RedisSet.DB,
 	})
 
 	_, err := RDB.Ping(ctxRedis).Result()
